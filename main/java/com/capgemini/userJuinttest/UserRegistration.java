@@ -1,5 +1,7 @@
 package com.capgemini.userJuinttest;
 
+
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
@@ -25,7 +27,7 @@ public class UserRegistration {
 	}
 	
 	private boolean validatePassword(String password) {
-		return password.matches("^(?=.*[A-Z]).{8,}$");
+		return password.matches("^(?=.*[A-Z])(?=.*[0-9]).{8,}$");
 	}
 
 	public static void main( String[] args ) {
