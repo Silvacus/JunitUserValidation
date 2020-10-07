@@ -9,84 +9,128 @@ public class UserRegistrationTest {
     @Test
     public void givenFirstName_WhenProper_ShouldReturnTrue() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateFirstName("Kevin");
+    	boolean result = false;
+    	try {
+			result = userValidator.validateFirstName("Kevin");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     	Assert.assertTrue(result);
     }
     
     @Test
     public void givenFirstName_WhenShort_ShouldReturnFalse() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateFirstName("Ke");
-    	Assert.assertFalse(result);
+		try {
+			userValidator.validateFirstName("Ke");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     }
     
     @Test
     public void givenFirstName_WhenNotStartCapital_ShouldReturnFalse() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateFirstName("abc");
-    	Assert.assertFalse(result);
+		try {
+			userValidator.validateFirstName("abc");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     }
     
     @Test
     public void givenFirstName_WhenContainOtherThanLetters_ShouldReturnFalse() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateFirstName("KevinSilvacus");
-    	Assert.assertFalse(result);
+		try {
+			userValidator.validateFirstName("Kev1Silva");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     }
     
     @Test
     public void givenEmailId_WhenPoper_ShouldReturnTrue() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateEmail("kevinsilvacus1998@gmail.com");
+    	boolean result = false;
+		try {
+			result = userValidator.validateEmail("kevinsilvacus@gmail.com");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     	Assert.assertTrue(result);
     }
     
     @Test
     public void givenEmailId_WhenNotAtTheSymbol_ShouldReturnFalse() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateEmail("abcgmail.com");
-    	Assert.assertFalse(result);
+		try {
+			userValidator.validateEmail("abcgmail.com");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     }
     
     @Test
     public void givenMobileNo_WhenProper_ShouldReturnTrue() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateMobileNo("91 1234567891");
+    	boolean result = false;
+		try {
+			result = userValidator.validateMobileNo("91 1234567891");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     	Assert.assertTrue(result);
     }
     
     @Test
     public void givenMobileNo_WhenNoSpace_ShouldReturnFalse() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateMobileNo("911234567891");
-    	Assert.assertFalse(result);
+		try {
+			userValidator.validateMobileNo("911234567891");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     }
     
     @Test
     public void givenMobileNo_WhenNotExactTen_ShouldReturnFalse() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateMobileNo("91 124585454454");
-    	Assert.assertFalse(result);
+		try {
+			userValidator.validateMobileNo("91 124585454454");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     }
     
     @Test
     public void givenMobileNo_WhenCountryCodeMoreThanTwo_ShouldReturnFalse() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validateMobileNo("912 1234567891");
-    	Assert.assertFalse(result);
+		try {
+			userValidator.validateMobileNo("912 1234567891");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     }
     
     @Test
     public void givenPassword_WhenProper_ShouldReturnTrue() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validatePassword("abcA12@89");
+    	boolean result = false;
+		try {
+			result = userValidator.validatePassword("abcA12@89");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     	Assert.assertTrue(result);
     }
     
     @Test
-    public void givenPassword_WhenMoreThanOneSpecialChar_ShouldReturnTrue() {
+    public void givenPassword_WhenMoreThanOneSpecialChar_ShouldReturnFalse() {
     	UserRegistration userValidator =  new UserRegistration();
-    	boolean result = userValidator.validatePassword("abcA12@@89");
-    	Assert.assertFalse(result);
+		try {
+		userValidator.validatePassword("abcA12@@89");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
     }
 }
